@@ -4,9 +4,13 @@ COPY . /app
 
 WORKDIR /app
 
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
 RUN python -m nltk.downloader punkt
+
+ADD intents.json nltk_utils.py model.py train.py chat.py app.py ./app/
 
 RUN python ./train.py
 
