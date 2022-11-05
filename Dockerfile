@@ -10,7 +10,7 @@ RUN python -m nltk.downloader punkt
 
 COPY . .
 
-ADD intents.json nltk_utils.py model.py train.py chat.py app.py ./
+ADD . /app/
 
 RUN python ./train.py
 
