@@ -12,8 +12,6 @@ ADD . ./
 
 RUN python ./train.py
 
-RUN python ./app.py
-
 EXPOSE $PORT
 
 CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
