@@ -30,3 +30,11 @@ $ (venv) python chat.py
 Now for deployment `app.py` and `app.js`.
 
 $ (venv) python app.py
+
+pip freeze > requirements.txt
+
+Containerizing the application
+
+docker build -t python-chatbot
+
+docker run -p 8000:8000 python-chatbot
