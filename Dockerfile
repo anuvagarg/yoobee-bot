@@ -8,7 +8,11 @@ RUN pip install -r requirements.txt
 
 RUN python -m nltk.downloader punkt
 
+ADD . ./
+
 RUN python ./train.py
+
+RUN python ./app.py
 
 EXPOSE $PORT
 
