@@ -8,7 +8,9 @@ RUN pip install -r requirements.txt
 
 RUN python -m nltk.downloader punkt
 
-ADD . ./
+COPY . .
+
+ADD intents.json nltk_utils.py model.py train.py chat.py app.py ./
 
 RUN python ./train.py
 
