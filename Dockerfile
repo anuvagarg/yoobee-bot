@@ -4,30 +4,16 @@ COPY . /app
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+RUN python -m venv venv
 
-RUN python -m nltk.downloader punkt
+RUN . /venv/bin/activate && pip install --upgrade pip
 
-EXPOSE $PORT
+RUN . /venv/bin/activate && pip install -r requirements.txt
 
-CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+RUN . /venv/bin/python -m pip install --upgrade pip \
+                import nltk \
+                nltk.download('punkt')
 
-# COPY . /app
+RUN chmod +x entrypoint.sh
 
-# WORKDIR /app
-
-# RUN python3 -m venv venv
-
-# RUN . venv/bin/activate
-
-# RUN pip install --upgrade pip
-
-# RUN pip install -r requirements.txt
-
-# RUN python -m nltk.downloader punkt
-
-# RUN python ./train.py
-
-# EXPOSE $PORT
-
-# CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+ENTRYPOINT ["./entrypoint.sh"]
