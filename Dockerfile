@@ -3,6 +3,7 @@ RUN mkdir /app
 WORKDIR /app
 RUN python -m venv venv
 RUN . /app/venv/bin/activate && pip install --upgrade pip
+COPY requirements.txt /app/venv/bin
 RUN . /app/venv/bin/activate && pip install -r ./requirements.txt
 RUN . /app/venv/bin/python -m pip install --upgrade pip \
                 import nltk \
