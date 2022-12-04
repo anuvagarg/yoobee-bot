@@ -3,7 +3,7 @@ RUN mkdir /app
 WORKDIR /app
 RUN python -m venv venv
 RUN . /app/venv/bin/activate && pip install --upgrade pip
-RUN . /app/venv/bin/activate && pip install -r ./app/requirements.txt
+RUN . /app/venv/bin/activate && pip install -r ./requirements.txt
 RUN . /app/venv/bin/python -m pip install --upgrade pip \
                 import nltk \
                 nltk.download('punkt')
